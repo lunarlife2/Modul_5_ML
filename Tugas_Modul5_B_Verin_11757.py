@@ -1,6 +1,6 @@
 import streamlit as st
-import tensorflow as tf
 import numpy as np
+import pickle
 from PIL import Image
 import os
 
@@ -18,7 +18,7 @@ if os.path.exists(model_path):
         def preprocess_image(image):
             image = image.resize((28,28))
             image = image.convert('L')
-            image_array = np.array(image)
+            image_array = np.array(image)/255.0
             image_array = image_array.reshape(1, -1)
             return image_array
         
